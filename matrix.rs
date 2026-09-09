@@ -18,7 +18,7 @@ impl Matrix{
 
     fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Matrix{
         assert_eq(rows * cols, elements.len());
-        
+
         let matrix = Matrix{
             rows,
             cols,
@@ -53,6 +53,29 @@ impl Matrix{
         newMaxtix
 
     }
+
+    
+    fn subtract( &self, matrix2: &Self  ) -> Matrix{
+
+        assert_eq!(self.rows, matrix2.rows);
+        assert_eq!(self.cols, matrix2.cols);
+
+        let mut newElements = vec![0.0; self.elements.len()];
+        
+        for i in 0..self.elements.len(){
+            newElements[i] = self[i] - matrix2[i]
+        }
+
+        let newMaxtix = Matrix{
+            rows: self.rows,
+            cols: self.cols,
+            elements: newElements,
+        };
+        
+        newMaxtix
+
+    }
+    
 
 
 
