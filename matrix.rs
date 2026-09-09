@@ -12,7 +12,7 @@ impl Matrix{
             cols,
             rows,
             elements: vec![0.0; cols*rows],
-        }
+        };
         matrix
     }
 
@@ -21,12 +21,13 @@ impl Matrix{
             rows,
             cols,
             elements,
-        }
+        };
         matrix
     }
 
-    fn get( row: usize, col: usize) -> f64{
-
+    fn get( row: usize, col: usize, &self) -> f64{
+        let element = self.elements[ row*self.cols + col];
+        element
     }
 
     
