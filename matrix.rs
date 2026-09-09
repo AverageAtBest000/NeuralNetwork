@@ -6,16 +6,20 @@ struct Matrix{
 
 
 impl Matrix{
-    
-    fn new(cols: usize, rows: usize) -> Matrix{
+
+    fn new( rows: usize, cols: usize) -> Matrix{
         let matrix = Matrix{
             cols: cols,
             rows: rows,
-            Vec::new()
+            elements: vec![0.0; cols*rows],
         }
 
         matrix
     }
+
+    
+
+
 
 
 
