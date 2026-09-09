@@ -90,12 +90,18 @@ impl Matrix{
             elements: newElements,
 
         };
-
         matrix
+    }
+    
+
+    fn multiply(&self, matrix2: &Self) -> Matrix{
+
+        assert_eq(self.cols, matrix2.rows);
+
+        for i in 0...
 
 
     }
-    
 
 
 
