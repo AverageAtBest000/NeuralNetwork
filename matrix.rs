@@ -25,13 +25,28 @@ impl Matrix{
         matrix
     }
 
-    fn get( row: usize, col: usize, &self) -> f64{
-        let element = self.elements[ row*self.cols + col];
+    fn get( &self, row: usize, col: usize) -> f64{
+        let element = self.elements[ row * self.cols + col];
         element
     }
 
     
+    fn add( &self, matrix2: &Self  ) -> Matrix{
+        let mut newElements = vec![0.0; self.elements.len()];
+        
+        for i in 0..self.elements.len(){
+            newElements[i] = self[i] + matrix2[i]
+        }
 
+        let newMaxtix = Matrix{
+            rows: self.rows,
+            cols: self.cols,
+            elements: newElements,
+        };
+        
+        newMaxtix
+
+    }
 
 
 
