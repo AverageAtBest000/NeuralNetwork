@@ -17,13 +17,16 @@ impl Matrix{
     }
 
     fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Matrix{
-        l
-        et matrix = Matrix{
+        let matrix = Matrix{
             rows,
             cols,
             elements,
         }
         matrix
+    }
+
+    fn get( row: usize, col: usize) -> f64{
+
     }
 
     
