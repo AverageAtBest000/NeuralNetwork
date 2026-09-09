@@ -9,11 +9,20 @@ impl Matrix{
 
     fn new( rows: usize, cols: usize) -> Matrix{
         let matrix = Matrix{
-            cols: cols,
-            rows: rows,
+            cols,
+            rows,
             elements: vec![0.0; cols*rows],
         }
+        matrix
+    }
 
+    fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Matrix{
+        l
+        et matrix = Matrix{
+            rows,
+            cols,
+            elements,
+        }
         matrix
     }
 
