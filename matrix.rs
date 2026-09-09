@@ -116,9 +116,7 @@ impl Matrix{
 
                 let element = Matrix::dot(row, col);
 
-                elements[j * self.cols ];
-                row * self.cols + col
-
+                elements[j * self.cols + i ];
             }
         }
 
