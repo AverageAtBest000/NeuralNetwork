@@ -75,6 +75,26 @@ impl Matrix{
         newMaxtix
 
     }
+
+    fn mult_scalar( &self, scalar:f64 ){
+
+        let mut newElements = vec![0.0; self.elements.len()];
+
+        for i in 0...self.elements.len(){
+            newElements[i] = self.elements[i] * scalar;
+        }
+
+        let matrix = Matrix{
+            rows: self.rows,
+            cols: self.cols,
+            elements: newElements,
+
+        };
+
+        matrix
+
+
+    }
     
 
 
