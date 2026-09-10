@@ -120,6 +120,14 @@ impl Matrix{
             }
         }
 
+        let newMaxtix = Matrix {
+            rows,
+            cols,
+            elements,
+        };
+
+        newMaxtix
+
 
     }
 
@@ -134,6 +142,16 @@ impl Matrix{
         }
 
         dot
+    }
+
+
+    fn display(&self){
+
+        for i in range self.elements.len(){
+            let row = &v[];
+            println();
+        }
+
     }
 
 
