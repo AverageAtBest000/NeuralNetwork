@@ -146,12 +146,10 @@ impl Matrix{
 
 
     fn display(&self){
-
-        for i in range self.elements.len(){
-            let row = &v[];
-            println();
+        for i in (0..(self.elements.len() - self.cols)).step_by(self.cols){
+            let row = &v[i..(i+self.cols)];
+            println(row);
         }
-
     }
 
 
