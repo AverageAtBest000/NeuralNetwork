@@ -1,4 +1,4 @@
-struct Matrix{
+pub struct Matrix{
     cols: usize,
     rows: usize,
     elements: Vec<f64>
@@ -7,7 +7,7 @@ struct Matrix{
 
 impl Matrix{
 
-    fn new( rows: usize, cols: usize) -> Matrix{
+    pub fn new( rows: usize, cols: usize) -> Matrix{
         let matrix = Matrix{
             cols,
             rows,
@@ -16,8 +16,8 @@ impl Matrix{
         matrix
     }
 
-    fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Matrix{
-        assert_eq(rows * cols, elements.len());
+    pub fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Matrix{
+        assert_eq!(rows * cols, elements.len());
 
         let matrix = Matrix{
             rows,
@@ -27,13 +27,13 @@ impl Matrix{
         matrix
     }
 
-    fn get( &self, row: usize, col: usize) -> f64{
+    pub fn get( &self, row: usize, col: usize) -> f64{
         let element = self.elements[ row * self.cols + col];
         element
     }
 
     
-    fn add( &self, matrix2: &Self  ) -> Matrix{
+    pub fn add( &self, matrix2: &Self  ) -> Matrix{
 
         assert_eq!(self.rows, matrix2.rows);
         assert_eq!(self.cols, matrix2.cols);
@@ -41,7 +41,7 @@ impl Matrix{
         let mut newElements = vec![0.0; self.elements.len()];
         
         for i in 0..self.elements.len(){
-            newElements[i] = self[i] + matrix2[i]
+            newElements[i] = self.elements[i] + matrix2.elements[i]
         }
 
         let newMaxtix = Matrix{
@@ -55,7 +55,7 @@ impl Matrix{
     }
 
     
-    fn subtract( &self, matrix2: &Self  ) -> Matrix{
+    pub fn subtract( &self, matrix2: &Self  ) -> Matrix{
 
         assert_eq!(self.rows, matrix2.rows);
         assert_eq!(self.cols, matrix2.cols);
@@ -63,7 +63,7 @@ impl Matrix{
         let mut newElements = vec![0.0; self.elements.len()];
         
         for i in 0..self.elements.len(){
-            newElements[i] = self[i] - matrix2[i]
+            newElements[i] = self.elements[i] - matrix2.elements[i]
         }
 
         let newMaxtix = Matrix{
@@ -76,11 +76,11 @@ impl Matrix{
 
     }
 
-    fn mult_scalar( &self, scalar:f64 ) -> Matrix{
+    pub fn mult_scalar( &self, scalar:f64 ) -> Matrix{
 
         let mut newElements = vec![0.0; self.elements.len()];
 
-        for i in 0...self.elements.len(){
+        for i in 0..self.elements.len(){
             newElements[i] = self.elements[i] * scalar;
         }
 
@@ -94,7 +94,7 @@ impl Matrix{
     }
     
 
-    fn multiply(&self, matrix2: &Self) -> Matrix{
+    pub fn multiply(&self, matrix2: &Self) -> Matrix{
 
         assert_eq!(self.cols, matrix2.rows);
 
@@ -102,19 +102,19 @@ impl Matrix{
         let rows = matrix2.rows;
         let cols = self.cols;
 
-        for i in 0...self.cols{
+        for i in 0..self.cols{
         
             let mut col = vec![0.0; self.rows];
             
-            for k in 0...self.rows{
+            for k in 0..self.rows{
                 col[k] = self.get(i,k);
             }
 
             for j in 0..matrix2.rows{
                 
-                let mut row = matrix2[j];
+                let mut row = matrix2.elements[j*cols..(j + 1)*cols].to_vec();
 
-                let element = Matrix::dot(row, col);
+                let element = Matrix::dot(&row, &col);
 
                 elements[j * self.cols + i ];
             }
@@ -131,11 +131,11 @@ impl Matrix{
 
     }
 
-    fn dot( vec1: Vec<64>, vec2: Vec<64>) -> f64{
+    pub fn dot( vec1: &[f64], vec2: &[f64]) -> f64{
         
         assert_eq!(vec1.len(), vec2.len());
 
-        let mut dot = 0;
+        let mut dot: f64 = 0.0;
 
         for i in 0..vec1.len(){
             dot += vec1[i] * vec2[i]; 
@@ -145,10 +145,10 @@ impl Matrix{
     }
 
 
-    fn display(&self){
-        for i in (0..(self.elements.len() - self.cols)).step_by(self.cols){
-            let row = &v[i..(i+self.cols)];
-            println(row);
+    pub fn display(&self){
+        for i in (0..self.elements.len()).step_by(self.cols){
+            let row = &self.elements[i..(i+self.cols)];
+            println!("{:?}",row);
         }
     }
 
