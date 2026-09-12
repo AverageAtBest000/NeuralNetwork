@@ -38,19 +38,19 @@ impl Matrix{
         assert_eq!(self.rows, matrix2.rows);
         assert_eq!(self.cols, matrix2.cols);
 
-        let mut newElements = vec![0.0; self.elements.len()];
+        let mut new_elements = vec![0.0; self.elements.len()];
         
         for i in 0..self.elements.len(){
-            newElements[i] = self.elements[i] + matrix2.elements[i]
+            new_elements[i] = self.elements[i] + matrix2.elements[i]
         }
 
-        let newMaxtix = Matrix{
+        let new_maxtix = Matrix{
             rows: self.rows,
             cols: self.cols,
-            elements: newElements,
+            elements: new_elements,
         };
         
-        newMaxtix
+        new_maxtix
 
     }
 
@@ -60,34 +60,34 @@ impl Matrix{
         assert_eq!(self.rows, matrix2.rows);
         assert_eq!(self.cols, matrix2.cols);
 
-        let mut newElements = vec![0.0; self.elements.len()];
+        let mut new_elements = vec![0.0; self.elements.len()];
         
         for i in 0..self.elements.len(){
-            newElements[i] = self.elements[i] - matrix2.elements[i]
+            new_elements[i] = self.elements[i] - matrix2.elements[i]
         }
 
-        let newMaxtix = Matrix{
+        let new_maxtix = Matrix{
             rows: self.rows,
             cols: self.cols,
-            elements: newElements,
+            elements: new_elements,
         };
         
-        newMaxtix
+        new_maxtix
 
     }
 
     pub fn mult_scalar( &self, scalar:f64 ) -> Matrix{
 
-        let mut newElements = vec![0.0; self.elements.len()];
+        let mut new_elements = vec![0.0; self.elements.len()];
 
         for i in 0..self.elements.len(){
-            newElements[i] = self.elements[i] * scalar;
+            new_elements[i] = self.elements[i] * scalar;
         }
 
         let matrix = Matrix{
             rows: self.rows,
             cols: self.cols,
-            elements: newElements,
+            elements: new_elements,
 
         };
         matrix
@@ -121,13 +121,13 @@ impl Matrix{
             }
         }
 
-        let newMaxtix = Matrix {
+        let new_maxtix = Matrix {
             rows,
             cols,
             elements,
         };
 
-        newMaxtix
+        new_maxtix
 
 
     }
