@@ -153,5 +153,22 @@ impl Matrix{
         }
     }
 
+    pub fn transpose(matrix: &Self) -> Matrix{
 
+        let mut new_elements = vec![0.0; matrix.rows * matrix.cols];
+
+        for r in 0..matrix.rows{
+            for c in 0..matrix.cols{
+                new_elements[c * matrix.rows + r ] = matrix.get(r,c);
+            }
+
+        }
+
+        Matrix{
+            rows: matrix.cols,
+            cols: matrix.rows,
+            elements: new_elements,
+        }
+
+    }
 }
