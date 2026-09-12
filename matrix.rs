@@ -98,25 +98,26 @@ impl Matrix{
 
         assert_eq!(self.cols, matrix2.rows);
 
-        let mut elements = vec![0.0; matrix2.rows * self.cols];
-        let rows = matrix2.rows;
-        let cols = self.cols;
+        let mut elements = vec![0.0; self.rows * matrix2.cols];
+        let rows = self.rows;
+        let cols = matrix2.cols;
 
-        for i in 0..self.cols{
+        for i in 0..matrix2.cols{
         
-            let mut col = vec![0.0; self.rows];
+            let mut col = &mut vec![0.0; matrix2.rows];
             
-            for k in 0..self.rows{
-                col[k] = self.get(i,k);
+            for k in 0..matrix2.rows{
+                col[k] = matrix2.get(k,i);
             }
 
-            for j in 0..matrix2.rows{
+            for j in 0..self.rows{
                 
-                let mut row = matrix2.elements[j*cols..(j + 1)*cols].to_vec();
+                let mut row = &self.elements[ j*self.cols..( j+1 )*self.cols ];
 
-                let element = Matrix::dot(&row, &col);
+                let element = Matrix::dot(row, col);
 
-                elements[j * self.cols + i ];
+                elements[j * cols + i ] = element;
+                // (self.row, m2.col)
             }
         }
 
