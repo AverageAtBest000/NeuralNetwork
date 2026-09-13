@@ -64,11 +64,7 @@ impl Matrix{
             new_elements[i] = self.elements[i] - matrix2.elements[i]
         }
 
-        Matrix{
-            rows: self.rows,
-            cols: self.cols,
-            elements: new_elements,
-        }
+        Matrix{ rows: self.rows, cols: self.cols, elements: new_elements,}
         
     }
 
@@ -80,12 +76,7 @@ impl Matrix{
             new_elements[i] = self.elements[i] * scalar;
         }
 
-        Matrix{
-            rows: self.rows,
-            cols: self.cols,
-            elements: new_elements,
-
-        }
+        Matrix{ rows: self.rows, cols: self.cols, elements: new_elements,}
     }
     
 
@@ -116,12 +107,23 @@ impl Matrix{
             }
         }
 
-        Matrix {
-            rows,
-            cols,
-            elements,
+        Matrix { rows, cols, elements,}
+
+    }
+
+    pub fn hadamard(&self, matrix2: &Self) -> Matrix{
+
+        assert_eq!(self.rows, matrix2.rows);
+        assert_eq!(self.cols, matrix2.cols);
+
+        let mut new_elements = vec![0.0; self.rows*self.cols];
+
+        for i in 0..self.cols*self.rows{
+            new_elements[i] = self.elements[i] * matrix2.elements[i];
         }
 
+        Matrix { cols: self.cols, rows: self.rows, elements: new_elements, }
+        
     }
 
     pub fn dot( vec1: &[f64], vec2: &[f64]) -> f64{
@@ -156,11 +158,7 @@ impl Matrix{
 
         }
 
-        Matrix{
-            rows: matrix.cols,
-            cols: matrix.rows,
-            elements: new_elements,
-        }
+        Matrix{ rows: matrix.cols, cols: matrix.rows, elements: new_elements,}
     }
 
 
@@ -192,11 +190,7 @@ impl Matrix{
             new_elements[i] = operation(self.elements[i]);
         }
 
-        Matrix{
-            rows: self.rows,
-            cols: self.cols,
-            elements: new_elements,
-        }
+        Matrix{ rows: self.rows, cols: self.cols, elements: new_elements,}
 
     }
 
