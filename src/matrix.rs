@@ -21,12 +21,11 @@ impl Matrix{
     pub fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Matrix{
         assert_eq!(rows * cols, elements.len());
 
-        let matrix = Matrix{
+        Matrix{
             rows,
             cols,
             elements,
-        };
-        matrix
+        }
     }
 
     pub fn get( &self, row: usize, col: usize) -> f64{
@@ -46,14 +45,11 @@ impl Matrix{
             new_elements[i] = self.elements[i] + matrix2.elements[i]
         }
 
-        let new_maxtix = Matrix{
+        Matrix{
             rows: self.rows,
             cols: self.cols,
             elements: new_elements,
-        };
-        
-        new_maxtix
-
+        }
     }
 
     
@@ -68,14 +64,12 @@ impl Matrix{
             new_elements[i] = self.elements[i] - matrix2.elements[i]
         }
 
-        let new_maxtix = Matrix{
+        Matrix{
             rows: self.rows,
             cols: self.cols,
             elements: new_elements,
-        };
+        }
         
-        new_maxtix
-
     }
 
     pub fn mult_scalar( &self, scalar:f64 ) -> Matrix{
@@ -86,13 +80,12 @@ impl Matrix{
             new_elements[i] = self.elements[i] * scalar;
         }
 
-        let matrix = Matrix{
+        Matrix{
             rows: self.rows,
             cols: self.cols,
             elements: new_elements,
 
-        };
-        matrix
+        }
     }
     
 
@@ -123,14 +116,11 @@ impl Matrix{
             }
         }
 
-        let new_maxtix = Matrix {
+        Matrix {
             rows,
             cols,
             elements,
-        };
-
-        new_maxtix
-
+        }
 
     }
 
