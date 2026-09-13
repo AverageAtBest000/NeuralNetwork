@@ -10,12 +10,12 @@ pub struct Matrix{
 impl Matrix{
 
     pub fn new( rows: usize, cols: usize) -> Matrix{
-        let matrix = Matrix{
+        Matrix{
             cols,
             rows,
             elements: vec![0.0; cols*rows],
-        };
-        matrix
+        }
+        
     }
 
     pub fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Matrix{
@@ -191,4 +191,5 @@ impl Matrix{
         }
 
     }
+
 }
