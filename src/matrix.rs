@@ -145,7 +145,7 @@ impl Matrix{
         }
     }
 
-    pub fn transpose(matrix: &Self) -> Matrix{
+    pub fn transpose_2(matrix: &Self) -> Matrix{
 
         let mut new_elements = vec![0.0; matrix.rows * matrix.cols];
 
@@ -161,6 +161,24 @@ impl Matrix{
             cols: matrix.rows,
             elements: new_elements,
         }
+    }
+
+
+    pub fn transpose(&mut self){
+
+        let mut new_elements = vec![0.0; self.rows * self.cols];
+
+        for r in 0..self.rows{
+            for c in 0..self.cols{
+                new_elements[c * self.rows + r ] = self.get(r,c);
+            }
+
+        }
+        
+        let temp = self.rows;
+        self.rows = self.cols;
+        self.cols = temp;
+        self.elements = new_elements;
     }
 
 
