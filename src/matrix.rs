@@ -1,3 +1,5 @@
+use crate::matrix;
+
 pub struct Matrix{
     cols: usize,
     rows: usize,
@@ -167,6 +169,24 @@ impl Matrix{
         Matrix{
             rows: matrix.cols,
             cols: matrix.rows,
+            elements: new_elements,
+        }
+    }
+
+
+    pub fn map<F>(&self, operation: F) -> Matrix
+    where
+    F: Fn(f64) -> f64, 
+    {
+        let mut new_elements = vec![0.0; self.rows * self.cols];
+
+        for i in 0..self.elements.len(){
+            new_elements[i] = operation(self.elements[i]);
+        }
+
+        Matrix{
+            rows: self.rows,
+            cols: self.cols,
             elements: new_elements,
         }
 
