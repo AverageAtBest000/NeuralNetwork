@@ -18,7 +18,7 @@ impl Matrix{
         
     }
 
-    pub fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Matrix{
+    pub fn from_vector(rows:usize, cols:usize, elements:Vec<f64> ) -> Self{
         assert_eq!(rows * cols, elements.len());
 
         Matrix{

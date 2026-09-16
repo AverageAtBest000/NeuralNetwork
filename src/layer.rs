@@ -1,20 +1,20 @@
-mod matrix;
-use matrix::Matrix;
+use crate::activation::sigmoid;
+use crate::matrix::Matrix;
 
-pub struct Layer{
+pub struct Layer {
     weights: Matrix,
     biases: Matrix,
 }
 
-impl Layer{
-
-    pub fn new(neurons: Matrix, weights: Matrix) -> Layer{
-        assert_eq!(weights.rows, weights.cols);
-        assert_eq!(neurons.rows, weights.cols);
-
-        Matrix::multiply(weights, neurons);
-
+impl Layer {
+    pub fn new(weights: Matrix, biases: Matrix) -> Self {
+        Self { weights, biases }
     }
 
+    pub fn forward(&self, input: &Matrix) -> Matrix {
+        let weighted_input = self.weights.multiply(input);
+        let z = weighted_input.add(&self.biases);
 
+        z.map(sigmoid)
+    }
 }
