@@ -5,8 +5,8 @@ pub fn sigmoid(x: f64) -> f64{
 }
 
 pub fn sigmoid_derrivative(x: f64) -> f64{
-{
+
     let sig = sigmoid(x);
-    sig * (1 - sig)
+    sig * (1.0  - sig)
 }   
 
