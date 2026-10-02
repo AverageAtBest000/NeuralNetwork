@@ -4,7 +4,7 @@ use crate::layer::Layer;
 use crate::matrix::Matrix;
 
 
-struct Network{
+ pub struct Network{
     layers: Vec<Layer> 
 }
 
@@ -14,12 +14,12 @@ impl Network{
         Network{layers}
     }
 
-    pub fn forward_propagate(self, input_layer : Matrix) -> Matrix{
+    pub fn forward_propagate(&self, input_layer : Matrix) -> Matrix{
         
-        let layer_out = self.layer[0].forward_propagate(&input_layer);
+        let mut layer_out = self.layers[0].forward(&input_layer);
 
         for layer in 1..self.layers.len(){
-            layer_out = self.layers[i].forward_propagate(&layer_out);
+            layer_out = self.layers[layer].forward(&layer_out);
         }
 
         layer_out 

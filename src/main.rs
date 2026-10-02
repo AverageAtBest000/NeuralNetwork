@@ -1,9 +1,12 @@
 mod layer;
 mod matrix;
 mod activation;
+mod network;
+
 use crate::layer::Layer;
 use crate::matrix::Matrix;
 use crate::activation::sigmoid;
+use crate::network::Network;
 
 fn main() {
     let input = Matrix::from_vector(2, 1, vec![2.0, 3.0]);
